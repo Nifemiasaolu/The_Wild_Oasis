@@ -28,27 +28,34 @@ const TableHeader = styled.header`
   padding: 1.6rem 2.4rem;
 `;
 
-
 function CabinTable() {
- const {isLoading, data:cabins, error} = useQuery({
-    queryKey: ["cabin"],
-    queryFn: getCabins
-  })
+  const {
+    isLoading,
+    data: cabins,
+    error,
+  } = useQuery({
+    queryKey: ["Cabins"],
+    queryFn: getCabins,
+  });
 
-  if(isLoading) return <Spinner/>
+  if (isLoading) return <Spinner />;
 
-  return <Table role="table">
-    <TableHeader role="row">
-      <div></div>
-      <div>Cabin</div>
-      <div>Capacity</div>
-      <div>Price</div>
-      <div>Discount</div>
-      <div></div>
-    </TableHeader>
+  return (
+    <Table role="table">
+      <TableHeader role="row">
+        <div></div>
+        <div>Cabin</div>
+        <div>Capacity</div>
+        <div>Price</div>
+        <div>Discount</div>
+        <div></div>
+      </TableHeader>
 
-    {cabins.map(cabin => <CabinRow cabin={cabin} key={cabin.id}/>)}
-  </Table>
+      {cabins.map((cabin) => (
+        <CabinRow cabin={cabin} key={cabin.id} />
+      ))}
+    </Table>
+  );
 }
 
-export default CabinTable
+export default CabinTable;
