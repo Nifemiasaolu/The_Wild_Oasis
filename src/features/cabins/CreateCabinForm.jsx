@@ -70,7 +70,9 @@ function CreateCabinForm() {
 
   // Form Data displayed on cabin when submitted
   function onSubmit(data) {
-    mutate(data);
+    console.log(data);
+
+    mutate({...data, image: data.image[0]});
   }
   function onError(errors) {
     // console.log(errors);
@@ -153,7 +155,6 @@ function CreateCabinForm() {
         <FileInput
           id="image"
           accept="image/*"
-          type="file"
           {...register("image", {
             required: "This field is required",
           })}
