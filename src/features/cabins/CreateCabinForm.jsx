@@ -13,7 +13,7 @@ function CreateCabinForm({ cabinToEdit = {} }) {
   // Create a Cabin using useMutation
   const { isCreating, createCabin } = useCreateCabin();
   // Editing Cabin
-  const { isEditing, editCabin } = useEditCabin;
+  const { isEditing, editCabin } = useEditCabin();
   const isWorking = isCreating || isEditing;
 
   //To edit a Cabin
