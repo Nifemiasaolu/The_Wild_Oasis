@@ -6,7 +6,7 @@ export function useDeleteCabin() {
   const queryClient = useQueryClient();
   // To delete, you use useMutation hook
   const { isDeleting, mutate: deleteCabin } = useMutation({
-    // mutationFn: id=> deleteCabin(id)
+    // mutationFn: id=> deleteCabinAPI(id)
     mutationFn: deleteCabinAPI,
 
     onSuccess: () => {
