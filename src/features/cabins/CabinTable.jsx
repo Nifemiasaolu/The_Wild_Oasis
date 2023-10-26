@@ -4,6 +4,7 @@ import CabinRow from "./CabinRow";
 import { useCabins } from "./useCabins";
 import Table from "../../ui/Table";
 import Menus from "../../ui/Menus";
+import Empty from "../../ui/Empty";
 import { useSearchParams } from "react-router-dom";
 
 // const Table = styled.div`
@@ -15,26 +16,27 @@ import { useSearchParams } from "react-router-dom";
 //   overflow: hidden;
 // `;
 
-const TableHeader = styled.header`
-  display: grid;
-  grid-template-columns: 0.6fr 1.8fr 2.2fr 1fr 1fr 1fr;
-  column-gap: 2.4rem;
-  align-items: center;
+// const TableHeader = styled.header`
+//   display: grid;
+//   grid-template-columns: 0.6fr 1.8fr 2.2fr 1fr 1fr 1fr;
+//   column-gap: 2.4rem;
+//   align-items: center;
 
-  background-color: var(--color-grey-50);
-  border-bottom: 1px solid var(--color-grey-100);
-  text-transform: uppercase;
-  letter-spacing: 0.4px;
-  font-weight: 600;
-  color: var(--color-grey-600);
-  padding: 1.6rem 2.4rem;
-`;
+//   background-color: var(--color-grey-50);
+//   border-bottom: 1px solid var(--color-grey-100);
+//   text-transform: uppercase;
+//   letter-spacing: 0.4px;
+//   font-weight: 600;
+//   color: var(--color-grey-600);
+//   padding: 1.6rem 2.4rem;
+// `;
 
 function CabinTable() {
   const { isLoading, cabins } = useCabins();
   const [searchParams] = useSearchParams();
 
   if (isLoading) return <Spinner />;
+  if (!cabins.length) return <Empty resourceName="cabins" />;
 
   // 1) FILTER
   //Get the filtered details
@@ -50,16 +52,17 @@ function CabinTable() {
     filteredCabins = cabins.filter((cabin) => cabin.discount > 0);
 
   // 2) SORTBY {How to sort options}
-  //Ger the sortby details
+  //Get the sortby details
   const sortBy = searchParams.get("sortBy") || "startDate-asc";
   // Destructure sortBy
   const [field, direction] = sortBy.split("-");
   //Create a modifier
   const modifier = direction === "asc" ? 1 : -1;
-  console.log(modifier)
   // Then write the sorting logic using the filteredCabins and multiply with the modifier.
-  console.log(filteredCabins)
-  
+  const sortedCabins = filteredCabins.sort(
+    (a, b) => (a[field] - b[field]) * modifier
+  );
+
   // const sortedCabins = filteredCabins.sort(
   //   ((a, b) => a[field] - b[field]) * modifier
   // );
@@ -78,8 +81,8 @@ function CabinTable() {
 
         <Table.Body
           // data={cabins}
-          data={filteredCabins}
-          // data={sortedCabins}
+          // data={filteredCabins}
+          data={sortedCabins}
           render={(cabin) => <CabinRow cabin={cabin} key={cabin.id} />}
         />
       </Table>
