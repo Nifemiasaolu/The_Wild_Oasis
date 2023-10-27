@@ -6,19 +6,25 @@ function useBookings() {
   const [searchParams] = useSearchParams();
 
   // FILTER
-  const filteredValue = searchParams.get("status");
+  const filterValue = searchParams.get("status");
   const filter =
-    !filteredValue || filteredValue === "all"
+    !filterValue || filterValue === "all"
       ? null
-      : { field: "status", value: filteredValue };
+      // : { field: "status", value: filterValue };
+      : { field: "totalPrice", value: 5000, method: "gte" };
+
+  //SORT
+  const sortByRaw = searchParams.get("sortBy") || "startDate-desc";
+  const [field, direction] = sortByRaw.split("-")
+  const sortBy = {field, direction};
 
   const {
     data: bookings,
     isLoading,
     error,
   } = useQuery({
-    queryKey: ["bookings", filter],
-    queryFn: () => getBookings({ filter }),
+    queryKey: ["bookings", filter, sortBy],
+    queryFn: () => getBookings({ filter, sortBy }),
   });
 
   return { bookings, isLoading, error };
