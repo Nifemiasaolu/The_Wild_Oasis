@@ -7,10 +7,12 @@ function useBookings() {
 
   // FILTER
   const filteredValue = searchParams.get("status");
+  console.log(filteredValue)
   const filter =
     !filteredValue || filteredValue === "all"
       ? null
       : { field: "status", value: filteredValue };
+      console.log(filter)
 
   const {
     data: bookings,
