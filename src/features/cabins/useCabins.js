@@ -7,7 +7,7 @@ export function useCabins() {
     data: cabins,
     error,
   } = useQuery({
-    queryKey: ["Cabins"],
+    queryKey: ["cabins"],
     queryFn: getCabinsAPI,
   });
 
