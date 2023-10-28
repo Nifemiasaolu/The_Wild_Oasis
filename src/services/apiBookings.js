@@ -9,7 +9,15 @@ export async function getBookings({ filter, sortBy }) {
     );
 
   //FILTER
-  if (filter !== null) query = query.eq(filter.field, filter.value);
+  // if (filter !== null) query = query.eq(filter.field, filter.value);
+  // Making the method dynamic
+  if (filter) query = query[filter.method || "eq"](filter.field, filter.value);
+
+  //SORT
+  if (sortBy)
+    query = query.order(sortBy.field, {
+      ascending: sortBy.direction === "asc",
+    });
 
   const { data, error } = await query;
 
@@ -24,7 +32,7 @@ export async function getBookings({ filter, sortBy }) {
 export async function getBooking(id) {
   const { data, error } = await supabase
     .from("bookings")
-    .select("*, cabins(*), guests(*)")
+    .select("*, Cabins(*), guests(*)")
     .eq("id", id)
     .single();
 
