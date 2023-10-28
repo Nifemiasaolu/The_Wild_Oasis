@@ -2,26 +2,25 @@ import { useQuery } from "@tanstack/react-query";
 import { getBookings } from "../../services/apiBookings";
 import { useSearchParams } from "react-router-dom";
 
-function useBookings() {
+export function useBookings() {
   const [searchParams] = useSearchParams();
 
   // FILTER
-  const filteredValue = searchParams.get("status");
+  const filterValue = searchParams.get("status");
   const filter =
     !filterValue || filterValue === "all"
       ? null
-      : { field: "status", value: filteredValue };
+      : { field: "status", value: filterValue };
+      // : { field: "status", value: filterValue, method: "gte" };
 
   const {
     data: bookings,
     isLoading,
     error,
   } = useQuery({
-    queryKey: ["bookings", filter, sortBy],
-    queryFn: () => getBookings({ filter, sortBy }),
+    queryKey: ["bookings", filter],
+    queryFn: () => getBookings({ filter }),
   });
 
   return { bookings, isLoading, error };
 }
-
-export default useBookings;
