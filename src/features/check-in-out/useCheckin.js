@@ -10,10 +10,14 @@ export function useCheckin() {
   const { mutate: checkin, isLoading: isCheckingIn } = useMutation({
     //These are the two datas that are needed to be able to check in:
     // bookinId, and the column data(status and isPaid)
-    mutationFn: ({ bookingId }) =>
+    // Breakfast details (totalPrice, extrasPrice & hasBreakfast)
+    // that need to be updated are passed into the function,
+    // and spread as "breakfast"
+    mutationFn: ({ bookingId, breakfast }) =>
       updateBooking(bookingId, {
         status: "checked-in",
         isPaid: true,
+        ...breakfast,
       }),
 
     onSuccess: (data) => {
