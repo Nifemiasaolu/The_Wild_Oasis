@@ -35,13 +35,15 @@ const FilterButton = styled.button`
   }
 `;
 
-function Filter({ filteredField, options }) {
+function Filter({ filterField, options }) {
   // Saving the data in the URL using searchParams
   const [searchParams, setSearchParams] = useSearchParams();
-  const currentFilter = searchParams.get(filteredField) || options.at(0).value;
+  const currentFilter = searchParams.get(filterField) || options.at(0).value;
 
   function handleClick(value) {
-    searchParams.set(filteredField, value);
+    searchParams.set(filterField, value);
+    //This should change the page URL to 1, when filtered
+    if(searchParams.get("page")) searchParams.set('page', 1);
     setSearchParams(searchParams);
   }
 
