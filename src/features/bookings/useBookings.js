@@ -13,7 +13,7 @@ export function useBookings() {
     !filterValue || filterValue === "all"
       ? null
       : { field: "status", value: filterValue };
-  // : { field: "status", value: filterValue, method: "gte" };
+  // : { field: "totalPrice", value: 5000, method: "gte" };
 
   // SORT
   const sortByRaw = searchParams.get("sortBy") || "startDate-desc";
