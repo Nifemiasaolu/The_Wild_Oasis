@@ -105,6 +105,12 @@ export async function getStaysTodayActivity() {
   return data;
 }
 
+
+// For Checkin API
+
+// The function receives the "id" for the row that needs to be updated,
+// and the "object(obj)" for the new field values (all the values for 
+// the columns that are going to be updated)
 export async function updateBooking(id, obj) {
   const { data, error } = await supabase
     .from("bookings")
