@@ -1,18 +1,24 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 import { format, isToday } from "date-fns";
+import {
+  HiArrowDownOnSquare,
+  HiArrowUpOnSquare,
+  HiEye,
+  HiTrash,
+} from "react-icons/hi2";
 
-import Tag from "../../ui/Tag";
-import Table from "../../ui/Table";
+import ConfirmDelete from "../../ui/ConfirmDelete";
 
 import { formatCurrency } from "../../utils/helpers";
 import { formatDistanceFromNow } from "../../utils/helpers";
-import Menus from "../../ui/Menus";
-import { HiArrowDownOnSquare, HiArrowUpOnSquare, HiEye } from "react-icons/hi2";
-import { useNavigate } from "react-router-dom";
+
 import { useCheckout } from "../check-in-out/useCheckout";
 import { useDeleteBooking } from "./useDeleteBooking";
+import Tag from "../../ui/Tag";
+import Table from "../../ui/Table";
+import Menus from "../../ui/Menus";
 import Modal from "../../ui/Modal";
-import ConfirmDelete from "../../ui/ConfirmDelete";
 
 const Cabin = styled.div`
   font-size: 1.6rem;
@@ -90,7 +96,7 @@ function BookingRow({
       <Tag type={statusToTagName[status]}>{status.replace("-", " ")}</Tag>
 
       <Amount>{formatCurrency(totalPrice)}</Amount>
-      
+
       <div>
         <Modal>
           <Menus.Menu>
@@ -123,11 +129,7 @@ function BookingRow({
               )}
 
               <Modal.Open opens="delete">
-                {status === "checked-out" && (
-                  <Menus.Button icon={<HiArrowUpOnSquare />}>
-                    Delete
-                  </Menus.Button>
-                )}
+                <Menus.Button icon={<HiTrash />}>Delete booking</Menus.Button>
               </Modal.Open>
             </Menus.List>
           </Menus.Menu>
@@ -136,7 +138,7 @@ function BookingRow({
             <ConfirmDelete
               resourceName={"booking"}
               disabled={isDeleteBooking}
-              onClick={() => deleteBooking(bookingId)}
+              onConfirm={() => deleteBooking(bookingId)}
             />
           </Modal.Window>
         </Modal>
