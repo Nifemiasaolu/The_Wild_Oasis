@@ -2,6 +2,8 @@ import styled from "styled-components";
 import DashboardBox from "./DashboardBox";
 
 const StyledSalesChart = styled(DashboardBox)`
+/* The chart needs to occupy the entire width of the column */
+/* 1/-1 means the width goes from begininng to the end */
   grid-column: 1 / -1;
 
   /* Hack to change grid line colors */
