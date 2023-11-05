@@ -54,3 +54,6 @@ function Stats({ bookings, confirmedStays, numDays, cabinCount }) {
 }
 
 export default Stats;
+
+
+////
