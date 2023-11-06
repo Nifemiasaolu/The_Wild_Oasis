@@ -1,9 +1,20 @@
 import styled from "styled-components";
 import DashboardBox from "./DashboardBox";
+import Heading from "../../ui/Heading";
+import {
+  Area,
+  AreaChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
+import { useDarkMode } from "../../context/DarkModeContext";
 
 const StyledSalesChart = styled(DashboardBox)`
-/* The chart needs to occupy the entire width of the column */
-/* 1/-1 means the width goes from begininng to the end */
+  /* The chart needs to occupy the entire width of the column */
+  /* 1/-1 means the width goes from begininng to the end */
   grid-column: 1 / -1;
 
   /* Hack to change grid line colors */
@@ -45,7 +56,11 @@ const fakeData = [
   { label: "Feb 06", totalSales: 1450, extrasSales: 400 },
 ];
 
-const isDarkMode = true;
+
+
+function SalesChart() {
+  const {isDarkMode} = useDarkMode()
+
 const colors = isDarkMode
   ? {
       totalSales: { stroke: "#4f46e5", fill: "#4f46e5" },
@@ -60,5 +75,26 @@ const colors = isDarkMode
       background: "#fff",
     };
 
+  return (
+    <StyledSalesChart>
+      <Heading as="h2">Sales</Heading>
 
-    //
+      <ResponsiveContainer width="100%" height={300}>
+        <AreaChart data={fakeData} >
+          <CartesianGrid strokeDasharray="4"/>
+          <XAxis dataKey="label" tick={{fill: colors.text}} tickLine={{stroke: colors.text}}/>
+          <YAxis unit="$" tick={{fill: colors.text}} tickLine={{stroke: colors.text}}/>
+          <Tooltip contentStyle={{backgroundColor: colors.background}}/>
+          <Area
+            dataKey="totalSales"
+            type="monotone"
+            stroke={colors.totalSales.stroke}
+            fill={colors.totalSales.fill}
+          />
+        </AreaChart>
+      </ResponsiveContainer>
+    </StyledSalesChart>
+  );
+}
+
+export default SalesChart;
