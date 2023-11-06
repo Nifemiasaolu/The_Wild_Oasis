@@ -34,9 +34,9 @@ function BookingDetail() {
   const { deleteBooking, isDeleteBooking } = useDeleteBooking();
   const moveBack = useMoveBack();
   const navigate = useNavigate();
-
+  
+  
   if (isLoading) return <Spinner />;
-
   const { status, id: bookingId } = booking;
 
   const statusToTagName = {
