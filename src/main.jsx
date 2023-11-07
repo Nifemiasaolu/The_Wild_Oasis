@@ -7,7 +7,7 @@ import ErrorFallback from "./ui/ErrorFallback.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    {/* ErrorBoundary is used to carch possible error when React renders*/}
+    {/* ErrorBoundary is used to catch possible error when React renders*/}
     <ErrorBoundary
       FallbackComponent={ErrorFallback}
       onReset={() => window.location.replace("/")}
