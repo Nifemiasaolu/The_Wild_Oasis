@@ -12,7 +12,7 @@ import { useMoveBack } from "../../hooks/useMoveBack";
 import { useBooking } from "./useBooking";
 import Spinner from "../../ui/Spinner";
 import {
-  HiArrowDownOnSquare,
+
   HiArrowUpOnSquare,
   HiTrash,
 } from "react-icons/hi2";
