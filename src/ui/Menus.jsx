@@ -87,6 +87,10 @@ function Toggle({ id }) {
   const { openId, open, close, setPosition } = useContext(MenusContext);
 
   function handleClick(e) {
+    // This is to make sure the data doesnt bubble up back to the dom
+    // In simple terms, it allows the toggle to open and close the list menu.
+    e.stopPropagation();
+
     // Logic on open/close toggle
     openId === "" || openId !== id ? open(id) : close();
 
@@ -106,7 +110,7 @@ function Toggle({ id }) {
 
 function List({ id, children }) {
   const { openId, position, close } = useContext(MenusContext);
-  const ref = useOutsideClick(close);
+  const ref = useOutsideClick(close, false);
 
   //Think about the logic, what does it do??? But its needed!!
   if (openId !== id) return null;
