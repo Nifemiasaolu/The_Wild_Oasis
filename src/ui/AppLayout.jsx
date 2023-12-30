@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 import styled from "styled-components";
+import { useState } from "react";
 
 const StyledAppLayout = styled.div`
   display: grid;
@@ -9,9 +10,11 @@ const StyledAppLayout = styled.div`
   grid-template-rows: auto 1fr;
   height: 100vh;
 
-  /* @media screen and (max-width: 960px) {
-    grid-template-columns: 15rem 1fr ;
-  } */
+  @media screen and (max-width: 960px) {
+    /* grid-template-columns: 15rem 1fr ; */
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+  }
 `;
 
 const Main = styled.main`
@@ -29,10 +32,20 @@ const Container = styled.div`
 `;
 
 function AppLayout() {
+  const [show, setShow] = useState(false);
+
+  function handleClick() {
+    setShow((show) => !show);
+  }
+
+  function closeMobileMenu(){
+    setShow(false);
+  }
+
   return (
     <StyledAppLayout>
-      <Header />
-      <Sidebar />
+      <Header show={show} onClick={handleClick}/>
+      <Sidebar show={show} onClick={closeMobileMenu}/>
       <Main>
         <Container>
           <Outlet />
@@ -44,4 +57,4 @@ function AppLayout() {
 
 export default AppLayout;
 
-// 
+//
