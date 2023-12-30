@@ -1,8 +1,8 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
-const styled = { createGlobalStyle };
+// const styled = { createGlobalStyle };
 
-const GlobalStyles = styled.createGlobalStyle`
+const GlobalStyles = createGlobalStyle`
   /* Colors adapted from https://tailwindcss.com/docs/customizing-colors */
 
   :root {
@@ -235,6 +235,70 @@ FOR DARK MODE
 `;
 
 export default GlobalStyles;
+
+export const Container = styled.div`
+  width: 100%;
+  max-width: 1300px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0 50px;
+
+  @media screen and (max-width: 960px) {
+    padding: 0 30px;
+  }
+`;
+
+export const Section = styled.section`
+  padding: ${({ padding }) => (padding ? padding : "140px 0")};
+  margin: ${({ margin }) => (margin ? margin : "")};
+  background: ${({ inverse }) => (inverse ? "white" : "#071c2f")};
+  position: ${({ position }) => (position ? position : "")};
+  width: ${({ width }) => (width ? width : "auto")};
+  min-width: ${({ minWidth }) => (minWidth ? minWidth : "auto")};
+  max-width: ${({ maxWidth }) => (maxWidth ? maxWidth : "auto")};
+  height: ${({ height }) => (height ? height : "auto")};
+  max-height: ${({ maxHeight }) => (maxHeight ? maxHeight : "auto")};
+  min-height: ${({ minHeight }) => (minHeight ? minHeight : "auto")};
+
+  @media screen and (max-width: 768px) {
+    padding: ${({ smpadding }) => (smpadding ? smpadding : "70px 0")};
+  }
+`;
+
+export const Row = styled.div`
+  display: flex;
+  justify-content: ${({ justify }) => (justify ? justify : "")};
+  align-items: ${({ align }) => (align ? align : "")};
+  gap: ${({ gap }) => (gap ? gap : "")};
+  padding: ${({ padding }) => (padding ? padding : "")};
+  margin: ${({ margin }) => (margin ? margin : "")};
+  position: ${({ position }) => (position ? position : "")};
+  width: ${({ width }) => (width ? width : "auto")};
+  min-width: ${({ minWidth }) => (minWidth ? minWidth : "auto")};
+  max-width: ${({ maxWidth }) => (maxWidth ? maxWidth : "auto")};
+  height: ${({ height }) => (height ? height : "auto")};
+  max-height: ${({ maxHeight }) => (maxHeight ? maxHeight : "auto")};
+  min-height: ${({ minHeight }) => (minHeight ? minHeight : "auto")};
+  flex-wrap: ${({ wrap }) => (wrap ? wrap : "")};
+`;
+
+export const Column = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: ${({ justify }) => (justify ? justify : "")};
+  align-items: ${({ align }) => (align ? align : "")};
+  gap: ${({ gap }) => (gap ? gap : "")};
+  padding: ${({ padding }) => (padding ? padding : "")};
+  margin: ${({ margin }) => (margin ? margin : "")};
+  position: ${({ position }) => (position ? position : "")};
+  width: ${({ width }) => (width ? width : "auto")};
+  min-width: ${({ minWidth }) => (minWidth ? minWidth : "auto")};
+  max-width: ${({ maxWidth }) => (maxWidth ? maxWidth : "auto")};
+  height: ${({ height }) => (height ? height : "auto")};
+  max-height: ${({ maxHeight }) => (maxHeight ? maxHeight : "auto")};
+  min-height: ${({ minHeight }) => (minHeight ? minHeight : "auto")};
+`;
+
 
 
 // ///
