@@ -12,6 +12,11 @@ const NavList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+
+  @media screen and(max-width: 960px) {
+    /* align-items: center; */
+    /* gap: 6.2rem; */
+  }
 `;
 
 const StyledNavLink = styled(NavLink)`
@@ -20,6 +25,7 @@ const StyledNavLink = styled(NavLink)`
     display: flex;
     align-items: center;
     gap: 1.2rem;
+
 
     color: var(--color-grey-600);
     font-size: 1.6rem;
@@ -51,9 +57,17 @@ const StyledNavLink = styled(NavLink)`
   &.active:visited svg {
     color: var(--color-brand-600);
   }
+
+  @media screen and (max-width: 960px) {
+    /* display: flex; */
+    
+    /* gap: 4rem; */
+    /* align-items: center; */
+  }
+  
 `;
 
-function MainNav() {
+function MainNav({show}) {
   return (
     <nav>
       <NavList>
