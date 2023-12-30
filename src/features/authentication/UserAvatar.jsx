@@ -19,6 +19,10 @@ const Avatar = styled.img`
   object-position: center;
   border-radius: 50%;
   outline: 2px solid var(--color-grey-100);
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 function UserAvatar() {
