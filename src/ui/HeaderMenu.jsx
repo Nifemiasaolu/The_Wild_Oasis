@@ -11,14 +11,22 @@ const StyledHeaderMenu = styled.ul`
   gap: 0.4rem;
 `
 
+const HeaderButtonIcon= styled(ButtonIcon)`
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+
+  ${ButtonIcon}
+`
+
 function HeaderMenu() {
   const navigate = useNavigate();
 
   return <StyledHeaderMenu>
     <li>
-      <ButtonIcon onClick={()=> navigate("/account")}>
+      <HeaderButtonIcon onClick={()=> navigate("/account")}>
         <HiOutlineUser/>
-      </ButtonIcon>
+      </HeaderButtonIcon>
     </li>
 
     <li>
