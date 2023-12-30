@@ -1,6 +1,6 @@
-import styled from "styled-components"
-import Logo from "./Logo"
-import MainNav from "./MainNav"
+import styled from "styled-components";
+import Logo from "./Logo";
+import MainNav from "./MainNav";
 // import Uploader from "../data/Uploader"
 
 const StyledSidebar = styled.aside`
@@ -11,17 +11,29 @@ const StyledSidebar = styled.aside`
   display: flex;
   flex-direction: column;
   gap: 3.2rem;
-`
 
-function Sidebar() {
+  @media screen and (max-width: 960px) {
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: ${({ show }) => (show ? 1 : 0)};
+    visibility: ${({show})=> show? "visible" : 'hidden'};
+    transform: translateY(${({show})=> show ? "0" : "10px"});
+  }
+`;
+
+function Sidebar({ show, onClick }) {
   return (
-    <StyledSidebar>
-      <Logo/>
-      <MainNav/>
+    <StyledSidebar show={show} onClick={onClick}>
+      <Logo />
+      <MainNav show={show}/>
 
       {/* <Uploader/> */}
     </StyledSidebar>
-  )
+  );
 }
 
-export default Sidebar
+export default Sidebar;
