@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-
+// import { Section } from "../styles/GlobalStyles";
 const Form = styled.form`
   ${(props) =>
     props.type === "regular" &&
@@ -20,6 +20,10 @@ const Form = styled.form`
     
   overflow: hidden;
   font-size: 1.4rem;
+
+  /* @media screen and (max-width: 768px) {
+    
+  } */
 `;
 
 Form.defaultProps ={
