@@ -26,7 +26,7 @@ const StyledFormRow = styled.div`
     gap: 1.2rem;
   }
 
-  @media screen and (max-width: 760px) {
+  @media screen and (max-width: 768px) {
     display: flex;
     align-content: center;
     justify-content: flex-start;
@@ -42,6 +42,12 @@ const StyledFormRow = styled.div`
 
 const Label = styled.label`
   font-weight: 500;
+
+  @media screen and (max-width: 768px) {
+    justify-content: start;
+    display: flex;
+    align-items: center;
+  }
 `;
 
 const Error = styled.span`
