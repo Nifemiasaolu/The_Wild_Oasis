@@ -22,6 +22,7 @@ const StyledSidebar = styled.aside`
     opacity: ${({ show }) => (show ? 1 : 0)};
     visibility: ${({show})=> show? "visible" : 'hidden'};
     transform: translateY(${({show})=> show ? "0" : "10px"});
+    z-index: 1;
   }
 `;
 
