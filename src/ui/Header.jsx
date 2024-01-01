@@ -46,6 +46,7 @@ const MobileIcon = styled.div`
     transform: translate(100%, 60%);
     font-size: 2rem;
     cursor: pointer;
+    z-index: 50;
   }
 `;
 
