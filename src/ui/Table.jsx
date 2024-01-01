@@ -7,7 +7,7 @@ const StyledTable = styled.div`
   font-size: 1.4rem;
   background-color: var(--color-grey-0);
   border-radius: 7px;
-  overflow: hidden;
+  overflow-x: auto;
 `;
 
 const CommonRow = styled.div`
@@ -101,5 +101,5 @@ function Body({ data, render }) {
 Table.Header = Header;
 Table.Row = Row;
 Table.Body = Body;
-Table.Footer = Footer;
+// Table.Footer = Footer;
 export default Table;
