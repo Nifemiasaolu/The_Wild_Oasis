@@ -19,6 +19,12 @@ const NavList = styled.ul`
   }
 `;
 
+const StyledNavList = styled.li`
+  @media screen and (max-width: 960px) {
+    gap: 4rem;
+  }
+`
+
 const StyledNavLink = styled(NavLink)`
   &:link,
   &:visited {
@@ -60,9 +66,8 @@ const StyledNavLink = styled(NavLink)`
 
   @media screen and (max-width: 960px) {
     /* display: flex; */
-    
-    /* gap: 4rem; */
-    /* align-items: center; */
+    /* justify-content: flex-start; */
+
   }
   
 `;
@@ -71,37 +76,37 @@ function MainNav({show}) {
   return (
     <nav>
       <NavList>
-        <li>
+        <StyledNavList>
           <StyledNavLink to="/dashboard">
             <HiOutlineHome />
             <span>Home</span>
           </StyledNavLink>
-        </li>
-        <li>
+        </StyledNavList>
+        <StyledNavList>
           <StyledNavLink to="/bookings">
             <HiOutlineCalendarDays />
             <span>Bookings</span>
           </StyledNavLink>
-        </li>
-        <li>
+        </StyledNavList>
+        <StyledNavList>
           <StyledNavLink to="/cabins">
             <HiOutlineHomeModern />
             <span>Cabins</span>
             
           </StyledNavLink>
-        </li>
-        <li>
+        </StyledNavList>
+        <StyledNavList>
           <StyledNavLink to="/users">
             <HiOutlineUsers />
             <span>Users</span>
           </StyledNavLink>
-        </li>
-        <li>
+        </StyledNavList>
+        <StyledNavList>
           <StyledNavLink to="/settings">
             <HiOutlineCog6Tooth />
             <span>Settings</span>
           </StyledNavLink>
-        </li>
+        </StyledNavList>
       </NavList>
     </nav>
   );
