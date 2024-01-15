@@ -12,7 +12,14 @@ ${props => props.type === "vertical" && css`
   flex-direction: column;
   gap: 1.6rem;
 `}
+
+@media screen and (max-width: 768px) {
+  flex-direction: column;
+  gap: 2rem;
+}
 `
+
+
 
 Row.defaultProps= {
   type: "vertical"
