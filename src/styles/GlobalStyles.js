@@ -236,7 +236,7 @@ FOR DARK MODE
 
 export default GlobalStyles;
 
-export const Container = styled.div`
+export const ContainerSec = styled.div`
   width: 100%;
   max-width: 1300px;
   margin-right: auto;
@@ -249,9 +249,9 @@ export const Container = styled.div`
 `;
 
 export const Section = styled.section`
-  padding: ${({ padding }) => (padding ? padding : "140px 0")};
+  padding: ${({ padding }) => (padding ? padding : "40px 0")};
   margin: ${({ margin }) => (margin ? margin : "")};
-  background: ${({ inverse }) => (inverse ? "white" : "#071c2f")};
+  /* background: ${({ inverse }) => (inverse ? "white" : "#071c2f")}; */
   position: ${({ position }) => (position ? position : "")};
   width: ${({ width }) => (width ? width : "auto")};
   min-width: ${({ minWidth }) => (minWidth ? minWidth : "auto")};
@@ -260,8 +260,10 @@ export const Section = styled.section`
   max-height: ${({ maxHeight }) => (maxHeight ? maxHeight : "auto")};
   min-height: ${({ minHeight }) => (minHeight ? minHeight : "auto")};
 
+
   @media screen and (max-width: 768px) {
     padding: ${({ smpadding }) => (smpadding ? smpadding : "70px 0")};
+    gap: 2rem;
   }
 `;
 
